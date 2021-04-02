@@ -1,0 +1,98 @@
+---
+title: "proposal.Rmd"
+author: "DS 202 Group 9"
+date: "3/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project Proposal
+
+**1.Names of the team members and project coordinator**
+
+  Answer:
+  
+  Group Members (Group 9): 
+  
+  * Alex Son 
+  * Madalyn Mueller 
+  * Mike Brown
+  * Nathan Marquardt
+  * Sydney Thompson 
+  * Vismay Gehlot
+  
+  Project Coordinator:
+  
+  * Nathan Marquardt
+  
+  
+**2.The link to the datasource**
+
+  Answer:
+  
+  The link to the data source can be found [here](https://www.kaggle.com/crawford/80-cereals).
+  
+
+**3.An overview of the dataset**
+
+  Answer:
+  
+  The dataset consists of nutritional facts between 80 different types of cereal. The categories that are featured in the dataset include: 
+  
+  * Name 
+  * Manufacturer 
+    + A = American Home Food Products
+    + G = General Mills 
+    + K = Kelloggs
+    + N = Nabisco
+    + P = Post
+    + Q = Quaker Oats
+    + R = Ralston Purina
+  * Type 
+     + Hot
+     + Cold
+  * Calories 
+  * Protein
+    + in grams
+  * Fat 
+    + in grams
+  * Sodium 
+    + in milligrams
+  * Fiber 
+    + in grams
+  * Carbohydrates 
+    + in grams
+  * Sugars 
+    + in grams
+  * Potassium 
+    + in milligrams
+  * Vitamins 
+    + none added
+    + enriched, often to 25 % FDA recommended
+    + 100% of FDA recommended
+  * Shelf Life 
+  * Weight of a Serving 
+    + in Ounces
+  * Cups per Serving
+    + in Cups
+  * Rating
+  
+  
+**4.A brief plan for an exploratory analysis: What questions can be answered from the dataset?**
+
+  Answer:
+  
+  * What is the correlation between nutritional values and rating?
+    + More sugar equal better rating?
+  * What is the most healthy hot cereal?
+  * What is the most healthy cold cereal?
+  * What is the least healthy hot cereal?
+  * What is the least healthy cold cereal?
+  * Do people prefer hot or cold cereal based off of the rating?
+  * Who is the "healthiest" manufacturer off average?
+  * Who is the least healthiest manufacturer off average?
+  * Which manufacturer has the highest average rating?
+  
