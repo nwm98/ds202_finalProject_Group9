@@ -1,0 +1,66 @@
+---
+title: "projectReport.Rmd"
+author: "DS 202 Group 9"
+date: "5/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+
+
+
+
+
+## Questions Raised
+
+
+
+
+
+## Obtaining and Cleaning the Dataset
+
+
+
+## Exploratory Analysis and A few questions raised
+
+
+
+## Steps for data wrangling and visualization
+
+
+
+## Answers to the quesitons raised
+
+
+
+
+## Conclusion
+
+
+
+
+
+
+## Contributions
+
+### Alex Son
+Place Contributing Paragraph Here
+
+### Madalyn Mueller
+Place Contributing Paragraph Here
+
+### Mike Brown
+Place Contributing Paragraph Here
+
+### Nathan Marquardt
+Place Contributing Paragraph Here
+
+### Sydney Thompson
+Place Contributing Paragraph Here
+
+### Vismay Gehlot
+Place Contributing Paragraph Here
