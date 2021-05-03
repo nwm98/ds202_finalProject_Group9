@@ -75,4 +75,11 @@ Place Contributing Paragraph Here
 Place Contributing Paragraph Here
 
 ### Vismay Gehlot
-Place Contributing Paragraph Here
+1. What is the healthiest cold cereal?
+
+To figure this out, I used the "cold" filtered data set that Madalyn had previously created. After this, I used the order function to reformat the data set into a list that orders by fiber in descending order and sugars in ascending order. I used these two measurements because we had previously defined that a healthy cereal would be considered one that is high in fiber and low in sugar. From this list, I learned that All-Bran with Extra Fiber is the healthiest cold cereal, as it contains 14 grams of fiber and 0 sugars per serving.
+
+
+2. What is the least healthiest cereal?
+
+This was similar to my first question, so I only had to change a little bit. This time, I ordered the cold cereal data set by fiber in ascending and sugar in descending instead of vice-versa. This allowed me to see which cereals were highest in sugar and lowest in fiber, making them unhealthy by our standards. From this list, I learned that Golden Crisp is the least healthiest cold cereal, as it contains no fiber and 15 grams of sugar per serving.

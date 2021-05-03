@@ -18,7 +18,7 @@ library(dplyr)
 
 ```{r}
 #All defaults
-cereal <- read.csv(file = '/Users/maddiemueller/Desktop/cereal.csv')
+cereal <- read.csv(file = '/Users/visma/Desktop/DS202/ds202_finalProject_Group9/cereal.csv')
 print(cereal)
 ```
 
@@ -68,4 +68,19 @@ mean(manu_r$rating)
 mean(manu_g$rating)
 mean(manu_p$rating)
 mean(manu_a$rating)
+```
+
+
+## What is the healthiest cold cereal?
+
+```{r}
+HCold <- cereal[order(-cereal$fiber, cereal$sugars),]
+head(HCold)
+```
+
+
+##What is the least healthiest cold cereal?
+```{r}
+LHCold <- cereal[order(cereal$fiber, -cereal$sugars),]
+head(LHCold)
 ```
