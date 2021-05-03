@@ -1,0 +1,71 @@
+---
+title: "cereal_finalproject"
+author: "Maddie Mueller"
+date: "4/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#All defaults
+library(ggplot2)
+library(usethis)
+library(dplyr)
+```
+
+```{r}
+#All defaults
+cereal <- read.csv(file = '/Users/maddiemueller/Desktop/cereal.csv')
+print(cereal)
+```
+
+## Do people prefer hot or cold cereal based off of the rating?
+
+```{r}
+#All defaults
+cold <- cereal %>%
+  filter(type == "C")
+hot <- cereal %>%
+  filter(type == "H")
+
+mean(cold$rating)
+mean(hot$rating)
+
+ggplot(cold, aes(x=name, weight=rating)) + geom_bar() + xlab("Cereal Name") + ylab("Rating") + ggtitle("Ratings of Cold Cereals") + theme(axis.text.x = element_text(angle = 90))
+ggplot(hot, aes(x=name, weight=rating)) + geom_bar() + xlab("Cereal Name") + ylab("Rating") + ggtitle("Ratings of Hot Cereals") + theme(axis.text.x = element_text(angle = 90))
+
+arrange(cold, rating)
+arrange(hot, rating)
+arrange(cereal, rating)
+```
+
+## Which manufacturer has the highest average rating?
+
+```{r}
+#All defaults
+manu_n <- cereal %>%
+  filter(mfr == "N")
+manu_q <- cereal %>%
+  filter(mfr == "Q")
+manu_k <- cereal %>%
+  filter(mfr == "K")
+manu_r <- cereal %>%
+  filter(mfr == "R")
+manu_g <- cereal %>%
+  filter(mfr == "G")
+manu_p <- cereal %>%
+  filter(mfr == "P")
+manu_a <- cereal %>%
+  filter(mfr == "A")
+
+mean(manu_n$rating)
+mean(manu_q$rating)
+mean(manu_k$rating)
+mean(manu_r$rating)
+mean(manu_g$rating)
+mean(manu_p$rating)
+mean(manu_a$rating)
+```

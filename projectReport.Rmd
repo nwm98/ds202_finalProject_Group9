@@ -51,7 +51,19 @@ knitr::opts_chunk$set(echo = TRUE)
 Place Contributing Paragraph Here
 
 ### Madalyn Mueller
-Place Contributing Paragraph Here
+1) Do people prefer hot or cold cereal based off of the rating?
+
+To find this, I first made two filtered data sets of cold and hot cereals, and then printed the mean rating for both of these data sets. I realized this was not the best way to compare the ratings, so I decided to do a different approach.
+
+I looked at the highest rated hot cereals, the highest rated cold cereals, and the highest rated cereals overall. I realized that only one of the 10 highest rated cereals was a hot cereal, the rest were cold.
+
+Based on the rating, people prefer cold cereal, although hot cereal still had some high ratings. It is also hard to compare because there are 74 cold cereals and 3 hot cereals.
+
+2) Which manufacturer has the highest average rating?
+
+To find this, I made filtered data sets of all 7 of the manufacturers (American Home Food Products, General Mills, Kelloggs, Nabisco, Post, Quaker Oats, Ralston Purina). Then I printed the average/mean ratings for each filtered data set.
+
+Nabisco is the manufacturer with the highest average rating. This makes sense, because five out of the 10 highest rated cereals are produced by Nabisco. Their cereals include 100% Bran, Cream of Wheat, Shredded Wheat, and Strawberry Fruit Wheats.
 
 ### Mike Brown
 Place Contributing Paragraph Here
