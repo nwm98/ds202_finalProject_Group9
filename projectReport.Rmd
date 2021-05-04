@@ -35,15 +35,6 @@ These questions include:
 
 The cereal information that we are using is from a website called Kaggle. The link to download the .csv file can be found [here](https://www.kaggle.com/crawford/80-cereals). A limiting constraint that this data set possesses is that we do not have any null values. Instead of null values, we have -1s in their place. To work around this, we decided to alter the columns that were needed to answer our questions by only keeping values that were 0 or above. This allowed us to remove the null values without methods such as na.omit() in dplyr functions. Other than that, the data set was clean for the most part.
 
-
-## Exploratory Analysis and A few questions raised
-
-
-
-## Steps for data wrangling and visualization
-
-
-
 ## Answers to the quesitons raised
 
 
@@ -51,6 +42,7 @@ The cereal information that we are using is from a website called Kaggle. The li
 
 ## Conclusion
 
+Looking at all of these questions and their statistics has allowed our group to narrow down our ideal cereal for the everyday consumer. For a healthy cereal, we recommend that a consumer chooses a Nabisco brand cereal that provides high fiber and protein, but limits its contents of sugar and calories. Other consumers, according to rating, will prefer to have the cheapest cereals or the most expensive cereals. So we recommend that a consumer should either limit their spending on cereal or go all out with their budget. A specific recommendation that we suggest for everyone would be 100% Bran or All Bran with Extra Fiber, as these cereals have the highest fiber content and the lowest sodium content. Overall, we noted based off of government guidelines that there are many healthy cereals for the everyday consumer. However, consumers will need to note that there are limited cereal options for what each consumer is trying to achieve nutritionally.  
 
 
 
