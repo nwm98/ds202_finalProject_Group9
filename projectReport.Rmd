@@ -17,6 +17,19 @@ Cereal is one of the most popular choices for breakfast in many places. Many cer
 
 ## Questions Raised
 
+Our group came up with the following questions that may impact the choice that an everyday consumer might make when purchasing cereal. 
+
+These questions include:
+
+ 1) What is the correlation between nutritional values and rating?
+ 2) What manufacturers have the most top shelf and bottom shelf cereals?
+ 3) What are the healthiest and least healthiest cold cereals?
+ 4) Do people prefer hot or cold cereal based off of the rating?
+ 5) Who are the “healthiest” and “least healthiest” manufacturers?
+ 6) What is a healthy cereal for kids based off of nutritional facts?
+ 7) What is a healthy cereal for adults/elders based off of nutritional facts?
+ 8) How much of the best/worst cereals can one have before exceeding recommended levels?
+ 9) Which shelf has the higher average rating?
 
 
 
