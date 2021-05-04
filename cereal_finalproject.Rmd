@@ -84,3 +84,24 @@ head(HCold)
 LHCold <- cereal[order(cereal$fiber, -cereal$sugars),]
 head(LHCold)
 ```
+
+## Which manufacturer is the healthiest on average?
+```{r}
+cereal1 <- filter(cereal, sugars >=0, fiber >=0)
+mf <- cereal1 %>% group_by(mfr) %>% summarize(SUGAR = mean(sugars), FIBER = mean(fiber))
+hlthymfr <- filter(mf, SUGAR < 6, FIBER >= 2.5)
+Manufacturer1<- c(A='American Home Food Products', G='General Mills', K='Kelloggs', N='Nabisco',P='Post',Q='Quaker Oats', R='Ralston Purina')
+mf$Manufacturer <- as.character(Manufacturer1[mf$mfr])
+mf$Manufacturer <- as.character(Manufacturer1[hlthymfr$mfr])
+ggplot(mf, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+ggplot(mf, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+# Answer: Nabisco (N)
+```
+
+## Which manufacturer is the least healthy on average?
+```{r}
+unhlthymfr <- filter(mf, SUGAR > 6, FIBER<2.5)
+ggplot(unhlthymfr, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+ggplot(unhlthymfr, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+# Answer: in order General Mills (G), Quaker Oats (Q), Ralston Purina (R). General Mills has most sugar and slightly more fiber than the rest, which convinces me that it is the least healthy manufacturer.
+```
