@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Background
 
-
+Cereal is one of the most popular choices for breakfast in many places. Many cereals can be very healthy due to their vitamin and mineral content as well as containing fiber, protein and whole grain. On the other hand many can be unhealthy due to high sugar content and lack of healthy ingredients. Our group wanted to create a buyer's guide to help consumers choose the right cereal for their needs. In this report we will be exploring 80 different cereals and comparing them based on nutritional value, rating and quality.
 
 
 
@@ -66,7 +66,7 @@ To find this, I made filtered data sets of all 7 of the manufacturers (American 
 Nabisco is the manufacturer with the highest average rating. This makes sense, because five out of the 10 highest rated cereals are produced by Nabisco. Their cereals include 100% Bran, Cream of Wheat, Shredded Wheat, and Strawberry Fruit Wheats.
 
 ### Mike Brown
-Place Contributing Paragraph Here
+
 
 ### Nathan Marquardt
 Place Contributing Paragraph Here
