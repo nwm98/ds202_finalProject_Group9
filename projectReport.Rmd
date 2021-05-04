@@ -83,14 +83,27 @@ Nabisco is the manufacturer with the highest average rating. This makes sense, b
 Place Contributing Paragraph Here
 
 ### Sydney Thompson
-Place Contributing Paragraph Here
+1) What is a healthy cereal for kids based on nutritional facts?
+
+I looked into healthy cereals for kids from ages 4-8 and 9-13 based off of their fiber and sodium intake levels for breakfast only. In doing so, I used nutritional data from a USDA daily intake summary table and made a ratio of the daily values and average cups per serving of cereal to compute the fiber and sodium values for breakfast intake. I found that for kids ages 4-8 should receive 6 or more grams of fiber and 150 grams or less of sodium and kids ages 9-13 should receive 7 or more grams of fiber and 200 grams or less of sodium. As a result, I found that both age groups should consume 100% Bran and/or All-Bran with Extra Fiber cereals if they are looking for a healthy breakfast.
+
+2) What is a healthy cereal for adults/elders based on nutritional facts?
+
+I also looked into healthy cereals for adults, male and female of ages 19-50, as well as elders, male and female of ages 70+. Men of ages 19-50 should consume 9 or more grams of fiber and 200 grams or less of sodium and women of the same age range should consume 6 grams or more of fiber and 200 grams or less of sodium. Males of 70+ should eat 7 grams or more of fiber and 150 grams or less of sodium and females of 70+ should eat 5 grams or more of fiber and 150 grams or less of sodium. As a result, Males 19-50, 70+ and females 70+ should eat 100% Bran and/or All-Bran with Extra Fiber if they're looking to buy a healthy cereal based on fiber and sodium intake. In addition, females of ages 19-50 also should purchase 100% Bran and All-Bran with Extra Fiber as well as a third cereal being Post Natural Raisin Bran. 
+
+3) How much of the healthiest/least healthiest cereal can one have before exceeding recommended levels?
+
+Using the same USDA daily intake summary table for male and female ages 19-50, I made a ratio of daily calories to meals per day to compute the amount of calories a male and female should consume approximately for breakfast and I concluded that men should have roughly 600 calories and females should have 500. After calculating the two I found the calories per serving in cups for the healthiest cereal, All-Bran with Extra Fiber, and the least healthiest cereal, Gold Crisp. With those values I created a simple equation of dividing the male and female calorie intake by the amount of calories per serving and then multiplied that value by the amount of cereal in cups. I found that men can have roughly 6 cups of the healthiest cereal and about 5.28 cups of the least healthiest cereal and for women 5 cups of the healthiest and 4.4 cups of the least healthiest. 
+
+I also contributed as a whole in finding a data set, further researching for information to make our analysis more complex, putting together and presenting slides for our group presentation and writing/creating the final report. 
+
 
 ### Vismay Gehlot
-1. What is the healthiest cold cereal?
+1) What is the healthiest cold cereal?
 
 To figure this out, I used the "cold" filtered data set that Madalyn had previously created. After this, I used the order function to reformat the data set into a list that orders by fiber in descending order and sugars in ascending order. I used these two measurements because we had previously defined that a healthy cereal would be considered one that is high in fiber and low in sugar. From this list, I learned that All-Bran with Extra Fiber is the healthiest cold cereal, as it contains 14 grams of fiber and 0 sugars per serving.
 
 
-2. What is the least healthiest cereal?
+2) What is the least healthiest cereal?
 
 This was similar to my first question, so I only had to change a little bit. This time, I ordered the cold cereal data set by fiber in ascending and sugar in descending instead of vice-versa. This allowed me to see which cereals were highest in sugar and lowest in fiber, making them unhealthy by our standards. From this list, I learned that Golden Crisp is the least healthiest cold cereal, as it contains no fiber and 15 grams of sugar per serving.
