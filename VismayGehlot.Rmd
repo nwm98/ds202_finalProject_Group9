@@ -1,0 +1,44 @@
+---
+title: "Vismay.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#All defaults
+library(ggplot2)
+library(usethis)
+library(dplyr)
+```
+
+```{r}
+#All defaults
+cereal <- read.csv(file = '/Users/visma/Desktop/DS202/ds202_finalProject_Group9/cereal.csv')
+print(cereal)
+```
+
+```{r}
+#All defaults
+cold <- cereal %>%
+  filter(type == "C")
+hot <- cereal %>%
+  filter(type == "H")
+```
+
+
+## What is the healthiest cold cereal?
+
+```{r}
+HCold <- cereal[order(-cereal$fiber, cereal$sugars),]
+head(HCold)
+```
+
+
+##What is the least healthiest cold cereal?
+```{r}
+LHCold <- cereal[order(cereal$fiber, -cereal$sugars),]
+head(LHCold)
+```
