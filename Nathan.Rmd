@@ -1,0 +1,74 @@
+---
+title: "Nathan.Rmd"
+author: "Nathan Marquardt"
+date: "5/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+
+cer <- read.csv("/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.csv")
+
+cerHealth <- cer %>%
+              filter(sugars <= 6 & fiber >= 2.5)
+
+
+## What is the correlation between nutritional values and rating?
+
+cerCal <- cer %>%
+            filter(calories >= 0)
+
+corCalories <- cor(cerCal$calories, cerCal$rating)
+
+cerProtein <- cer %>%
+              filter(protein >= 0)
+
+corProtein <- cor(cerProtein$protein, cerProtein$rating)
+
+cerFat <- cer %>%
+           filter(fat >= 0)
+
+corFat <- cor(cerFat$fat, cerFat$rating)
+
+cerSodium <- cer %>%
+              filter(sodium >= 0)
+
+corSodium <- cor(cerSodium$sodium, cerSodium$rating)
+
+cerFiber <- cer %>%
+            filter(fiber >= 0)
+
+corFiber <- cor(cerFiber$fiber, cerFiber$rating)
+
+cerCarbo <- cer %>%
+            filter(carbo >= 0)
+
+corCarbo <- cor(cerCarbo$carbo, cerCarbo$rating)
+
+cerSugars <- cer %>%
+            filter(sugars >= 0)
+
+corSugars <- cor(cerSugars$sugars, cerSugars$rating)
+
+cerPotass <- cer %>%
+              filter(potass >= 0)
+
+corPotass <- cor(cerPotass$potass, cerPotass$rating)
+
+dfCorCereal <- data.frame(category=c("Calories", "Carbo", "Fat", "Fiber", "Potass", "Protein", "Sodium", "Sugars"), value=c(corCalories, corCarbo, corFat, corFiber, corPotass, corProtein, corSodium, corSugars))
+
+dfCorCerealOrdered <- dfCorCereal %>%
+                        arrange(desc(dfCorCereal$value))
+
+## Which shelf has the higer average rating?
+
+avgShelf <- cer %>%
+              group_by(shelf) %>%
+              summarise(avgRating = mean(rating), count = n()) %>%
+              arrange(desc(avgRating))
+
