@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 Cereal is one of the most popular choices for breakfast in many places. Many cereals can be very healthy due to their vitamin and mineral content as well as containing fiber, protein and whole grain. On the other hand many can be unhealthy due to high sugar content and lack of healthy ingredients. Our group wanted to create a buyer's guide to help consumers choose the right cereal for their needs. In this report we will be exploring 80 different cereals and comparing them based on nutritional value, rating and quality.
 
 
-
 ## Questions Raised
 
 Our group came up with the following questions that may impact the choice that an everyday consumer might make when purchasing cereal. 
@@ -32,10 +31,9 @@ These questions include:
  9) Which shelf has the higher average rating?
 
 
-
-
 ## Obtaining and Cleaning the Dataset
 
+The cereal information that we are using is from a website called Kaggle. The link to download the .csv file can be found [here](https://www.kaggle.com/crawford/80-cereals). A limiting constraint that this data set possesses is that we do not have any null values. Instead of null values, we have -1s in their place. To work around this, we decided to alter the columns that were needed to answer our questions by only keeping values that were 0 or above. This allowed us to remove the null values without methods such as na.omit() in dplyr functions. Other than that, the data set was clean for the most part.
 
 
 ## Exploratory Analysis and A few questions raised
