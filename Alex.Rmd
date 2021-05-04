@@ -1,0 +1,66 @@
+---
+title: "ds202_project9_alex"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+```{r}
+
+cereal<- readr::read_csv("C:/Users/alex7/OneDrive/Documents/ds202_finalProject_Group9/cereal.csv")
+cereal
+
+
+
+```
+
+
+
+### What manufacturer has the most top shelf cereals (shelf =3)?
+
+```{r}
+
+q1<- select(cereal, c("mfr","shelf"))
+
+q2<- q1 %>%
+ filter(shelf=="3")
+q2
+
+q3<- q2 %>% count(mfr)
+q3
+
+```
+We can see that the manufacturer of "K" has the most top shelf cereals by having 12 of them on the list. As we had explained it before, manufacturer "K" stands for the brand "Kelloggs". 
+
+
+
+
+
+
+
+### What manufacturer has the most bottom shelf cereals(shelf = 1)?
+
+```{r}
+
+q4<- select(cereal, c("mfr","shelf"))
+
+q5<- q4 %>%
+ filter(shelf=="1")
+
+q6<- q5 %>% count(mfr)
+q6
+
+
+
+
+```
+
+We can see that the manufacturer of "G" has the most bottom shelf cereals by having 6 of them on the list. As we had explained it before, manufacturer "G" stands for the brand "General Mills".
+
+
+
+
