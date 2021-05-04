@@ -1,0 +1,78 @@
+---
+title: "Final Project Questions"
+author: "Sydney Thompson"
+date: "4/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Imported Data
+
+```{r}
+cereal <- read.csv("cereal.csv")
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+```
+
+#What is a "healthy" cereal for kids based on nutritional facts?
+
+#Kids 4-8 years of age
+
+```{r}
+kids_healthy <- cereal %>% filter(fiber >= 6, sodium <= 150)
+kids_healthy
+```
+
+#Kids 9-13 years of age
+
+```{r}
+kids_healthy2 <- cereal %>% filter(fiber >= 7, sodium <= 200)
+kids_healthy2
+```
+
+#What is a "healthy" cereal for adults/elders based on nutritional facts?
+
+#Males 19-50 years of age
+
+```{r}
+adultm_healthy <- cereal %>% filter(fiber >= 9, sodium <= 200)
+adultm_healthy
+```
+
+#Females 19-50 years of age
+
+```{r}
+adultf_healthy <- cereal %>% filter(fiber >= 6, sodium <= 200)
+adultf_healthy
+```
+
+#Males 70+ years of age
+
+```{r}
+elderm_healthy <- cereal %>% filter(fiber >= 7, sodium <= 150)
+elderm_healthy
+```
+
+#Females 70+ years of age
+
+```{r}
+elderf_healthy <- cereal %>% filter(fiber >= 5, sodium <= 150)
+elderf_healthy
+```
+
+#How many cups of the best/worst cereals can one have before exceeding recommended nutritional levels?
+
+```{r}
+amount_healthy_male <- (600/50)*0.5
+amount_healthy_male
+amount_worst_male <- (600/100)*0.88
+amount_worst_male
+amount_healthy_female <- (500/50)*0.5
+amount_healthy_female
+amount_worst_female <- (500/100)*0.88
+amount_worst_female
+```
