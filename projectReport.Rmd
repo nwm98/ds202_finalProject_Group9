@@ -107,11 +107,36 @@ dfCorCerealOrdered <- dfCorCereal %>%
   
   *2) What manufacturers have the most top shelf and bottom shelf cereals? (Answered by Alex)*
   
+  I had pulled out the "mfr" and "shelf" to make it easier to see for this question. 
+  Then I had filtered out the rows at shelf 3 for the top shelf and counted the numbers down for the manufacturers. 
+  
+```{r}
+q1<- select(cereal, c("mfr","shelf"))
+q2<- q1 %>%
+ filter(shelf=="3")
+q3<- q2 %>% count(mfr)
+q3
+
+```
+
+  
+  On the other hand, I had done the same process for the shelf =="1," which is the bottom shelf cereals.
+  
+```{r}
+q4<- select(cereal, c("mfr","shelf"))
+q5<- q4 %>%
+ filter(shelf=="1")
+q6<- q5 %>% count(mfr)
+q6
+
+```
+  
+  
   
   *3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)*
   
   
-  *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Alex Son)*
+  *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Madalyn Mueller)*
   
   
   *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown*
@@ -236,7 +261,12 @@ Looking at all of these questions and their statistics has allowed our group to 
 ## Contributions
 
 ### Alex Son
-Place Contributing Paragraph Here
+ 
+1) The questions I had were "What manufacturers have the most top shelf and bottom shelf cereals?" The brand "Kellogg" had the most top-shelf cereals, and the brand "General Mills" had the most bottom shelf cereals. 
+
+The questions I'd got for this project were more manageable than the questions that other guys had, so I tried to cooperate and be in the meetings as much as possible. Also, I am in charge of going through the last part of our presentation, for summing up and telling the challenges we had during our project. 
+
+
 
 ### Madalyn Mueller
 1) Do people prefer hot or cold cereal based off of the rating?
