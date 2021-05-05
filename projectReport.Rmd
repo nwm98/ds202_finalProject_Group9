@@ -37,7 +37,107 @@ The cereal information that we are using is from a website called Kaggle. The li
 
 ## Answers to the quesitons raised
 
+After coming up with our questions, we decided to explore the data to try and find conclusions to the questions that were raised above. This section will show our thought process for answering each question, as well as the code that helped us come to our conclusions. Here are our results:
 
+  *1) What is the correlation between nutritional values and rating? (Answered by: Nathan Marquardt)*
+  
+  For this question, I first needed to take away any null values (in the form of -1). To do this, I created a data frame for each category that for each category only had values that were 0 and above. After this, I created a correlation result using cor() to find the correlation value between each category compared to the rating value. After all the correlations were calculated, I then created a new dataframe with each category name as a column and their values as a column. Here is my code below.
+  
+  ```{r}
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+
+cer <- read.csv("/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.csv")
+
+cerHealth <- cer %>%
+              filter(sugars <= 6 & fiber >= 2.5)
+
+
+## What is the correlation between nutritional values and rating?
+
+cerCal <- cer %>%
+            filter(calories >= 0)
+
+corCalories <- cor(cerCal$calories, cerCal$rating)
+
+cerProtein <- cer %>%
+              filter(protein >= 0)
+
+corProtein <- cor(cerProtein$protein, cerProtein$rating)
+
+cerFat <- cer %>%
+           filter(fat >= 0)
+
+corFat <- cor(cerFat$fat, cerFat$rating)
+
+cerSodium <- cer %>%
+              filter(sodium >= 0)
+
+corSodium <- cor(cerSodium$sodium, cerSodium$rating)
+
+cerFiber <- cer %>%
+            filter(fiber >= 0)
+
+corFiber <- cor(cerFiber$fiber, cerFiber$rating)
+
+cerCarbo <- cer %>%
+            filter(carbo >= 0)
+
+corCarbo <- cor(cerCarbo$carbo, cerCarbo$rating)
+
+cerSugars <- cer %>%
+            filter(sugars >= 0)
+
+corSugars <- cor(cerSugars$sugars, cerSugars$rating)
+
+cerPotass <- cer %>%
+              filter(potass >= 0)
+
+corPotass <- cor(cerPotass$potass, cerPotass$rating)
+
+dfCorCereal <- data.frame(category=c("Calories", "Carbo", "Fat", "Fiber", "Potass", "Protein", "Sodium", "Sugars"), value=c(corCalories, corCarbo, corFat, corFiber, corPotass, corProtein, corSodium, corSugars))
+
+dfCorCerealOrdered <- dfCorCereal %>%
+                        arrange(desc(dfCorCereal$value))
+```
+  
+  
+  From the results, we can see that no categories has definatve positive or negative correlation. However, we can see that certain categories have a slightly more positive correlation. These categories are Fiber, Protein, and Potassium. Categories that had a slightly negative correlation in cldue Sodium, Fat, Calories, and Sugars. Carbohydrates appeared to have no correlation. 
+  
+  *2) What manufacturers have the most top shelf and bottom shelf cereals? (Answered by Alex)*
+  
+  
+  *3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)*
+  
+  
+  *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Alex Son)*
+  
+  
+  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Madalyn Mueller*
+  
+  
+  *6) What is a healthy cereal for kids based off of nutritional facts? (Answered by Sydney Thompson)*
+  
+  
+  *7) What is a healthy cereal for adults/elders based off of nutritional facts? (Answered by Sydney Thompson)*
+  
+  
+  *8) How much of the best/worst cereals can one have before exceeding recommended levels? Answered by Sydney Thompson)*
+  
+  
+  *9) Which shelf has the higher average rating? (Answered by Nathan Marquardt)*
+
+  For this question, I made a dplyr fuction that took our cereal dataset, grouped it by the shelf category, summarized the average rating and the count, and then arranged the results from the highest average rating to the least average rating. 
+  
+  ```{r}
+  avgShelf <- cer %>%
+              group_by(shelf) %>%
+              summarise(avgRating = mean(rating), count = n()) %>%
+              arrange(desc(avgRating))
+  ```
+  
+  From the results, we can see that the lowest shelf (shelf = 1) has the highest average rating. However, it is interesting to note that the highest shelf (shelf = 3) is really close and has more cereals in the data set to average. Shelf 2 has a significantly less average rating value. This leads me to conclude that people prefer to buy the cheapest cereal or the most expensive cereals based off of rating. 
 
 
 ## Conclusion
