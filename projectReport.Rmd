@@ -114,8 +114,31 @@ dfCorCerealOrdered <- dfCorCereal %>%
   *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Alex Son)*
   
   
-  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Madalyn Mueller*
-  
+  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown*
+  Which is the healthiest manufacturer?
+Answering this question required me to summarize the mean sugar and fiber content for each manufacturer.
+I then filtered the results to show the manufacturers that met the guidelines for a healthy cereal as defined by
+our source from the Cleveland Clinic (sugar < 6g/serving, fiber > 2.5g/serving). The only manufacturer to meet this criteria was Nabisco, but to better visualize how the other manufacturers placed, I made two graphs displaying the distribution of sugar and fiber content between the various manufacturers.
+
+```{r}
+cereal1 <- filter(cereal, sugars >=0, fiber >=0)
+mf <- cereal1 %>% group_by(mfr) %>% summarize(SUGAR = mean(sugars), FIBER = mean(fiber))
+hlthymfr <- filter(mf, SUGAR < 6, FIBER >= 2.5)
+Manufacturer1<- c(A='American Home Food Products', G='General Mills', K='Kelloggs', N='Nabisco',P='Post',Q='Quaker Oats', R='Ralston Purina')
+mf$Manufacturer <- as.character(Manufacturer1[mf$mfr])
+mf$Manufacturer <- as.character(Manufacturer1[hlthymfr$mfr])
+ggplot(mf, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+ggplot(mf, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+```
+
+Which is the least healthy manufacturer?
+This question is just the opposite of my first one. I used the same dataset of summarized sugar and fiber content but instead selected the manufacturers that were opposite to the recommendations from Cleveland Clinic. This yielded 3 results that weren't overwhelmingly obvious which is the worst. Ralston Purina is not that far from being considered healthy and Quaker Oats wasn't far from meeting the sugar requirement. General Mills had much more sugar than the rest and not much different fiber content, so I decided that General Mills was the least healthy of all. 
+
+```{r}
+unhlthymfr <- filter(mf, SUGAR > 6, FIBER<2.5)
+ggplot(unhlthymfr, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+ggplot(unhlthymfr, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
+```
   
   *6) What is a healthy cereal for kids based off of nutritional facts? (Answered by Sydney Thompson)*
   
@@ -231,6 +254,7 @@ To find this, I made filtered data sets of all 7 of the manufacturers (American 
 Nabisco is the manufacturer with the highest average rating. This makes sense, because five out of the 10 highest rated cereals are produced by Nabisco. Their cereals include 100% Bran, Cream of Wheat, Shredded Wheat, and Strawberry Fruit Wheats.
 
 ### Mike Brown
+I assisted the group with building the presentation and writing the project report. Apart from this I had two questions to answer which are which is the healthiest manufacturer and which is the least healthy manufacturer? I used code to analyze the data and create visualizations to better represent my findings. Finally I shared my results in the presentation with the group.
 
 
 ### Nathan Marquardt
