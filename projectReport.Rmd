@@ -39,7 +39,7 @@ The cereal information that we are using is from a website called Kaggle. The li
 
 After coming up with our questions, we decided to explore the data to try and find conclusions to the questions that were raised above. This section will show our thought process for answering each question, as well as the code that helped us come to our conclusions. Here are our results:
 
-  *1) What is the correlation between nutritional values and rating? (Answered by: Nathan Marquardt)*
+  *1) What is the correlation between nutritional values and rating? (Answered by Nathan Marquardt)*
   
   For this question, I first needed to take away any null values (in the form of -1). To do this, I created a data frame for each category that for each category only had values that were 0 and above. After this, I created a correlation result using cor() to find the correlation value between each category compared to the rating value. After all the correlations were calculated, I then created a new dataframe with each category name as a column and their values as a column. Here is my code below.
   
@@ -136,10 +136,14 @@ q6
   *3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)*
   
   
+  
+  
   *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Madalyn Mueller)*
   
   
-  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown*
+  
+  
+  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown)*
   Which is the healthiest manufacturer?
 Answering this question required me to summarize the mean sugar and fiber content for each manufacturer.
 I then filtered the results to show the manufacturers that met the guidelines for a healthy cereal as defined by
@@ -288,7 +292,8 @@ I assisted the group with building the presentation and writing the project repo
 
 
 ### Nathan Marquardt
-Place Contributing Paragraph Here
+
+For my contributions, I created an analysis for Question 1 (What is the correlation between nutritional values and rating?) and Question 9 (Which shelf has the higher average rating?). I also wrote the slides for Questions 1 and 9, as well as other slides. As team lead, I frequently created zoom meetings for our team to work on the project and was aloways willing and able to help teammates with questions and pushing up code to my created github repository. 
 
 ### Sydney Thompson
 1) What is a healthy cereal for kids based on nutritional facts?
