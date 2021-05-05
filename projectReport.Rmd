@@ -119,12 +119,74 @@ dfCorCerealOrdered <- dfCorCereal %>%
   
   *6) What is a healthy cereal for kids based off of nutritional facts? (Answered by Sydney Thompson)*
   
+All values of fiber and sodium for all ages were calculated with the use of nutritional data from the USDA daily intake summary table. Using the values for fiber and sodium, depending on the age range from the table, I made a ratio of the daily values and average cups per serving of cereal to compute the fiber and sodium values for breakfast intake only. These values are shown below within each age range of code:
+
+Kids 4-8 years of age:
+
+```{r}
+kids_healthy <- cereal %>% filter(fiber >= 6, sodium <= 150)
+kids_healthy
+```
+
+Kids 9-13 years of age:
+
+```{r}
+kids_healthy2 <- cereal %>% filter(fiber >= 7, sodium <= 200)
+kids_healthy2
+```
+
+As a result, all age ranges shown above should purchase 100% Bran and/or All-Bran with Extra Fiber cereals when looking for a healthy cereal to consume based on fiber and sodium intake values.
   
   *7) What is a healthy cereal for adults/elders based off of nutritional facts? (Answered by Sydney Thompson)*
   
+All values of fiber and sodium for all ages were calculated with the use of nutritional data from the USDA daily intake summary table. Using the values for fiber and sodium, depending on the age range from the table, I made a ratio of the daily values and average cups per serving of cereal to compute the fiber and sodium values for breakfast intake only. These values are shown below within each age range of code:
+
+Males 19-50 years of age:
+
+```{r}
+adultm_healthy <- cereal %>% filter(fiber >= 9, sodium <= 200)
+adultm_healthy
+```
+
+Females 19-50 years of age:
+
+```{r}
+adultf_healthy <- cereal %>% filter(fiber >= 6, sodium <= 200)
+adultf_healthy
+```
+
+Males 70+ years of age:
+
+```{r}
+elderm_healthy <- cereal %>% filter(fiber >= 7, sodium <= 150)
+elderm_healthy
+```
+
+Females 70+ years of age:
+
+```{r}
+elderf_healthy <- cereal %>% filter(fiber >= 5, sodium <= 150)
+elderf_healthy
+```
+
+As a result, all age ranges shown above should purchase 100% Bran and/or All-Bran with Extra Fiber cereals when looking for a healthy cereal to consume based on fiber and sodium intake values.
   
   *8) How much of the best/worst cereals can one have before exceeding recommended levels? Answered by Sydney Thompson)*
   
+Using the same USDA daily intake summary table, I made a ratio of daily calories to meals per day to compute the amount of calories a male and female should consume approximately for breakfast and I concluded that men should have roughly 600 calories and females should have 500. After calculating the two I found the calories per serving in cups for the healthiest cereal, All-Bran with Extra Fiber, and the least healthiest cereal, Gold Crisp, stated earlier by Vismay. With those values I created a simple equation of dividing the male and female calorie intake by the amount of calories per serving and then multiplied that value by the amount of cereal in cups.
+
+```{r}
+amount_healthy_male <- (600/50)*0.5
+amount_healthy_male
+amount_worst_male <- (600/100)*0.88
+amount_worst_male
+amount_healthy_female <- (500/50)*0.5
+amount_healthy_female
+amount_worst_female <- (500/100)*0.88
+amount_worst_female
+```
+
+I found that men can have roughly 6 cups of the healthiest cereal and about 5.28 cups of the least healthiest cereal and for women 5 cups of the healthiest and 4.4 cups of the least healthiest. That being said, it is reasonable for men to be able to consume more than women as they are usually greater in weight than women thus needing to eat more food to keep their body full.
   
   *9) Which shelf has the higher average rating? (Answered by Nathan Marquardt)*
 
