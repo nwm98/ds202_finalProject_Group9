@@ -134,7 +134,20 @@ q6
   
   
   *3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)*
-  
+```{r}
+cold <- cereal %>%
+  filter(type == "C")
+```
+To find this, I used the cold cereal filtered data set that Madalyn created and worked off that. We had established that the two factors in determining a healthy or unhealthy cereal depended on the amount of fiber and sugars in each cereal, so I decided to make an ordered list of the data set sorting by fiber in descending and sugar in ascending. This ordered the data set into a list that had the highest fiber with the lowest sugr and went down. From this list, I learned that All-Bran with Extra Fiber is the healthiest cold cereal as it contains 14 grams of fiber with no sugar per serving.
+```{r}
+HCold <- cereal[order(-cereal$fiber, cereal$sugars),]
+head(HCold)
+```
+To figure out the least healthiest cereal, I did the opposite of wht I stated above, making a list of cereals with fiber in ascending order and sugar in descending. This allowed me to see that Golden Crisp is the unhealthiest cereal, as it has no fiber and 15 grams of sugar per serving.
+```{r}
+LHCold <- cereal[order(cereal$fiber, -cereal$sugars),]
+head(LHCold)
+```
   
   
   
