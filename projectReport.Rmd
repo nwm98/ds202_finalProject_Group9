@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-![A bowl of cereal](/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.png)
+![A bowl of cereal](C:/Users/brown/OneDrive/Desktop/DS202/ds202_finalProject_Group9/cereal.png)
 
 ## Background
 
@@ -52,12 +52,12 @@ After coming up with our questions, we decided to explore the data to try and fi
   
   For this question, I first needed to take away any null values (in the form of -1). To do this, I created a data frame for each category that for each category only had values that were 0 and above. After this, I created a correlation result using cor() to find the correlation value between each category compared to the rating value. After all the correlations were calculated, I then created a new dataframe with each category name as a column and their values as a column. Here is my code below.
   
-  ```{r}
+```{r}
 library(dplyr)
 library(tidyverse)
 library(lubridate)
 
-cereal <- read.csv("/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.csv")
+cereal <- readr::read_csv('C:/Users/brown/OneDrive/Desktop/DS202/ds202_finalProject_Group9/cereal.csv')
 
 cerHealth <- cereal %>%
               filter(sugars <= 6 & fiber >= 2.5)
@@ -271,7 +271,7 @@ mf <- cereal1 %>% group_by(mfr) %>% summarize(SUGAR = mean(sugars), FIBER = mean
 hlthymfr <- filter(mf, SUGAR < 6, FIBER >= 2.5)
 Manufacturer1<- c(A='American Home Food Products', G='General Mills', K='Kelloggs', N='Nabisco',P='Post',Q='Quaker Oats', R='Ralston Purina')
 mf$Manufacturer <- as.character(Manufacturer1[mf$mfr])
-mf$Manufacturer <- as.character(Manufacturer1[hlthymfr$mfr])
+#mf$Manufacturer <- as.character(Manufacturer1[hlthymfr$mfr])
 ggplot(mf, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
 ggplot(mf, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
 ```
