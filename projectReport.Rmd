@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+![A bowl of cereal](/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.png)
+
 ## Background
 
 Cereal is one of the most popular choices for breakfast in many places. Many cereals can be very healthy due to their vitamin and mineral content as well as containing fiber, protein and whole grain. On the other hand many can be unhealthy due to high sugar content and lack of healthy ingredients. Our group wanted to create a buyer's guide to help consumers choose the right cereal for their needs. In this report we will be exploring 80 different cereals and comparing them based on nutritional value, rating and quality.
@@ -24,11 +26,12 @@ These questions include:
  2) What manufacturers have the most top shelf and bottom shelf cereals?
  3) What are the healthiest and least healthiest cold cereals?
  4) Do people prefer hot or cold cereal based off of the rating?
- 5) Who are the “healthiest” and “least healthiest” manufacturers?
- 6) What is a healthy cereal for kids based off of nutritional facts?
- 7) What is a healthy cereal for adults/elders based off of nutritional facts?
- 8) How much of the best/worst cereals can one have before exceeding recommended levels?
- 9) Which shelf has the higher average rating?
+ 5) Which manufacturers have the highest average rating?
+ 6) Who are the “healthiest” and “least healthiest” manufacturers?
+ 7) What is a healthy cereal for kids based off of nutritional facts?
+ 8) What is a healthy cereal for adults/elders based off of nutritional facts?
+ 9) How much of the best/worst cereals can one have before exceeding recommended levels?
+ 10) Which shelf has the higher average rating?
 
 
 ## Obtaining and Cleaning the Dataset
@@ -39,7 +42,13 @@ The cereal information that we are using is from a website called Kaggle. The li
 
 After coming up with our questions, we decided to explore the data to try and find conclusions to the questions that were raised above. This section will show our thought process for answering each question, as well as the code that helped us come to our conclusions. Here are our results:
 
-  *1) What is the correlation between nutritional values and rating? (Answered by Nathan Marquardt)*
+
+
+
+
+
+
+**1) What is the correlation between nutritional values and rating? (Answered by Nathan Marquardt)**
   
   For this question, I first needed to take away any null values (in the form of -1). To do this, I created a data frame for each category that for each category only had values that were 0 and above. After this, I created a correlation result using cor() to find the correlation value between each category compared to the rating value. After all the correlations were calculated, I then created a new dataframe with each category name as a column and their values as a column. Here is my code below.
   
@@ -48,50 +57,50 @@ library(dplyr)
 library(tidyverse)
 library(lubridate)
 
-cer <- read.csv("/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.csv")
+cereal <- read.csv("/Users/nathanmarquardt/Desktop/ds202_finalProject_Group9/cereal.csv")
 
-cerHealth <- cer %>%
+cerHealth <- cereal %>%
               filter(sugars <= 6 & fiber >= 2.5)
 
 
 ## What is the correlation between nutritional values and rating?
 
-cerCal <- cer %>%
+cerCal <- cereal %>%
             filter(calories >= 0)
 
 corCalories <- cor(cerCal$calories, cerCal$rating)
 
-cerProtein <- cer %>%
+cerProtein <- cereal %>%
               filter(protein >= 0)
 
 corProtein <- cor(cerProtein$protein, cerProtein$rating)
 
-cerFat <- cer %>%
+cerFat <- cereal %>%
            filter(fat >= 0)
 
 corFat <- cor(cerFat$fat, cerFat$rating)
 
-cerSodium <- cer %>%
+cerSodium <- cereal %>%
               filter(sodium >= 0)
 
 corSodium <- cor(cerSodium$sodium, cerSodium$rating)
 
-cerFiber <- cer %>%
+cerFiber <- cereal %>%
             filter(fiber >= 0)
 
 corFiber <- cor(cerFiber$fiber, cerFiber$rating)
 
-cerCarbo <- cer %>%
+cerCarbo <- cereal %>%
             filter(carbo >= 0)
 
 corCarbo <- cor(cerCarbo$carbo, cerCarbo$rating)
 
-cerSugars <- cer %>%
+cerSugars <- cereal %>%
             filter(sugars >= 0)
 
 corSugars <- cor(cerSugars$sugars, cerSugars$rating)
 
-cerPotass <- cer %>%
+cerPotass <- cereal %>%
               filter(potass >= 0)
 
 corPotass <- cor(cerPotass$potass, cerPotass$rating)
@@ -100,12 +109,22 @@ dfCorCereal <- data.frame(category=c("Calories", "Carbo", "Fat", "Fiber", "Potas
 
 dfCorCerealOrdered <- dfCorCereal %>%
                         arrange(desc(dfCorCereal$value))
+                        
+dfCorCerealOrdered
 ```
   
   
   From the results, we can see that no categories has definatve positive or negative correlation. However, we can see that certain categories have a slightly more positive correlation. These categories are Fiber, Protein, and Potassium. Categories that had a slightly negative correlation in cldue Sodium, Fat, Calories, and Sugars. Carbohydrates appeared to have no correlation. 
   
-  *2) What manufacturers have the most top shelf and bottom shelf cereals? (Answered by Alex)*
+  
+  
+  
+  
+  
+  
+  
+  
+**2) What manufacturers have the most top shelf and bottom shelf cereals? (Answered by Alex Son)**
   
   I had pulled out the "mfr" and "shelf" to make it easier to see for this question. 
   Then I had filtered out the rows at shelf 3 for the top shelf and counted the numbers down for the manufacturers. 
@@ -133,7 +152,15 @@ q6
   
   
   
-  *3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)*
+  
+  
+  
+  
+  
+  
+  
+  
+**3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)**
 ```{r}
 cold <- cereal %>%
   filter(type == "C")
@@ -151,7 +178,15 @@ head(LHCold)
   
   
   
-  *4) Do people prefer hot or cold cereal based off of the rating? (Answered by Madalyn Mueller)*
+  
+  
+  
+  
+  
+  
+  
+  
+**4) Do people prefer hot or cold cereal based off of the rating? (Answered by Madalyn Mueller)**
   
 ```{r}
 #All defaults
@@ -174,7 +209,15 @@ I looked at the highest rated hot cereals, the highest rated cold cereals, and t
 
 Based on the rating, people prefer cold cereal, although hot cereal still had some high ratings. It is also hard to compare because there are 74 cold cereals and 3 hot cereals.
 
-*5) Which manufacturer has the highest average rating?(by Madalyn Mueller)*
+
+
+
+
+
+
+
+
+**5) Which manufacturer has the highest average rating?(by Madalyn Mueller)**
 
 To find this, I made filtered data sets of all 7 of the manufacturers (American Home Food Products, General Mills, Kelloggs, Nabisco, Post, Quaker Oats, Ralston Purina). Then I printed the average/mean ratings for each filtered data set.
 
@@ -206,8 +249,18 @@ mean(manu_p$rating)
 mean(manu_a$rating)
 ```
   
-  *5) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown)*
+  
+  
+  
+  
+  
+  
+  
+  
+**6) Who are the “healthiest” and “least healthiest” manufacturers? (Answered by Mike Brown)**
+
   Which is the healthiest manufacturer?
+  
 Answering this question required me to summarize the mean sugar and fiber content for each manufacturer.
 I then filtered the results to show the manufacturers that met the guidelines for a healthy cereal as defined by
 our source from the Cleveland Clinic (sugar < 6g/serving, fiber > 2.5g/serving). The only manufacturer to meet this criteria was Nabisco, but to better visualize how the other manufacturers placed, I made two graphs displaying the distribution of sugar and fiber content between the various manufacturers.
@@ -224,6 +277,7 @@ ggplot(mf, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)'
 ```
 
 Which is the least healthy manufacturer?
+
 This question is just the opposite of my first one. I used the same dataset of summarized sugar and fiber content but instead selected the manufacturers that were opposite to the recommendations from Cleveland Clinic. This yielded 3 results that weren't overwhelmingly obvious which is the worst. Ralston Purina is not that far from being considered healthy and Quaker Oats wasn't far from meeting the sugar requirement. General Mills had much more sugar than the rest and not much different fiber content, so I decided that General Mills was the least healthy of all. 
 
 ```{r}
@@ -232,7 +286,15 @@ ggplot(unhlthymfr, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Su
 ggplot(unhlthymfr, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
 ```
   
-  *6) What is a healthy cereal for kids based off of nutritional facts? (Answered by Sydney Thompson)*
+  
+  
+  
+  
+  
+  
+  
+  
+**7) What is a healthy cereal for kids based off of nutritional facts? (Answered by Sydney Thompson)**
   
 All values of fiber and sodium for all ages were calculated with the use of nutritional data from the USDA daily intake summary table. Using the values for fiber and sodium, depending on the age range from the table, I made a ratio of the daily values and average cups per serving of cereal to compute the fiber and sodium values for breakfast intake only. These values are shown below within each age range of code:
 
@@ -252,7 +314,15 @@ kids_healthy2
 
 As a result, all age ranges shown above should purchase 100% Bran and/or All-Bran with Extra Fiber cereals when looking for a healthy cereal to consume based on fiber and sodium intake values.
   
-  *7) What is a healthy cereal for adults/elders based off of nutritional facts? (Answered by Sydney Thompson)*
+  
+  
+  
+  
+  
+  
+  
+  
+**8) What is a healthy cereal for adults/elders based off of nutritional facts? (Answered by Sydney Thompson)**
   
 All values of fiber and sodium for all ages were calculated with the use of nutritional data from the USDA daily intake summary table. Using the values for fiber and sodium, depending on the age range from the table, I made a ratio of the daily values and average cups per serving of cereal to compute the fiber and sodium values for breakfast intake only. These values are shown below within each age range of code:
 
@@ -286,7 +356,15 @@ elderf_healthy
 
 As a result, all age ranges shown above should purchase 100% Bran and/or All-Bran with Extra Fiber cereals when looking for a healthy cereal to consume based on fiber and sodium intake values.
   
-  *8) How much of the best/worst cereals can one have before exceeding recommended levels? Answered by Sydney Thompson)*
+  
+  
+  
+  
+  
+  
+  
+  
+**9) How much of the best/worst cereals can one have before exceeding recommended levels? (Answered by Sydney Thompson)**
   
 Using the same USDA daily intake summary table, I made a ratio of daily calories to meals per day to compute the amount of calories a male and female should consume approximately for breakfast and I concluded that men should have roughly 600 calories and females should have 500. After calculating the two I found the calories per serving in cups for the healthiest cereal, All-Bran with Extra Fiber, and the least healthiest cereal, Gold Crisp, stated earlier by Vismay. With those values I created a simple equation of dividing the male and female calorie intake by the amount of calories per serving and then multiplied that value by the amount of cereal in cups.
 
@@ -303,12 +381,20 @@ amount_worst_female
 
 I found that men can have roughly 6 cups of the healthiest cereal and about 5.28 cups of the least healthiest cereal and for women 5 cups of the healthiest and 4.4 cups of the least healthiest. That being said, it is reasonable for men to be able to consume more than women as they are usually greater in weight than women thus needing to eat more food to keep their body full.
   
-  *9) Which shelf has the higher average rating? (Answered by Nathan Marquardt)*
+  
+  
+  
+  
+  
+  
+  
+  
+**10) Which shelf has the higher average rating? (Answered by Nathan Marquardt)**
 
   For this question, I made a dplyr fuction that took our cereal dataset, grouped it by the shelf category, summarized the average rating and the count, and then arranged the results from the highest average rating to the least average rating. 
   
   ```{r}
-  avgShelf <- cer %>%
+  avgShelf <- cereal %>%
               group_by(shelf) %>%
               summarise(avgRating = mean(rating), count = n()) %>%
               arrange(desc(avgRating))
@@ -383,3 +469,11 @@ To figure this out, I used the "cold" filtered data set that Madalyn had previou
 2) What is the least healthiest cereal?
 
 This was similar to my first question, so I only had to change a little bit. This time, I ordered the cold cereal data set by fiber in ascending and sugar in descending instead of vice-versa. This allowed me to see which cereals were highest in sugar and lowest in fiber, making them unhealthy by our standards. From this list, I learned that Golden Crisp is the least healthiest cold cereal, as it contains no fiber and 15 grams of sugar per serving.
+
+
+## Sources
+
+[Data set Source](https://www.kaggle.com/crawford/80-cereals)
+[FDA Daily Intake Values](https://www.fda.gov/food/new-nutrition-facts-label/daily-value-new-nutrition-and-supplement-facts-labels)
+[USDA Daily Intake Values](https://www.nal.usda.gov/sites/default/files/fnic_uploads//SummaryTables.pdf)
+[Cleveland Clinic Recommendation](https://health.clevelandclinic.org/how-to-pick-a-healthy-cereal/)
