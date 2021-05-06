@@ -52,7 +52,7 @@ After coming up with our questions, we decided to explore the data to try and fi
   
   For this question, I first needed to take away any null values (in the form of -1). To do this, I created a data frame for each category that for each category only had values that were 0 and above. After this, I created a correlation result using cor() to find the correlation value between each category compared to the rating value. After all the correlations were calculated, I then created a new dataframe with each category name as a column and their values as a column. Here is my code below.
   
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 library(dplyr)
 library(tidyverse)
 library(lubridate)
@@ -129,7 +129,7 @@ dfCorCerealOrdered
   I had pulled out the "mfr" and "shelf" to make it easier to see for this question. 
   Then I had filtered out the rows at shelf 3 for the top shelf and counted the numbers down for the manufacturers. 
   
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 q1<- select(cereal, c("mfr","shelf"))
 q2<- q1 %>%
  filter(shelf=="3")
@@ -141,7 +141,7 @@ q3
   
   On the other hand, I had done the same process for the shelf =="1," which is the bottom shelf cereals.
   
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 q4<- select(cereal, c("mfr","shelf"))
 q5<- q4 %>%
  filter(shelf=="1")
@@ -161,17 +161,17 @@ q6
   
   
 **3) What are the healthiest and least healthiest cold cereals? (Answered by Vismay Gehlot)**
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 cold <- cereal %>%
   filter(type == "C")
 ```
 To find this, I used the cold cereal filtered data set that Madalyn created and worked off that. We had established that the two factors in determining a healthy or unhealthy cereal depended on the amount of fiber and sugars in each cereal, so I decided to make an ordered list of the data set sorting by fiber in descending and sugar in ascending. This ordered the data set into a list that had the highest fiber with the lowest sugr and went down. From this list, I learned that All-Bran with Extra Fiber is the healthiest cold cereal as it contains 14 grams of fiber with no sugar per serving.
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 HCold <- cereal[order(-cereal$fiber, cereal$sugars),]
 head(HCold)
 ```
 To figure out the least healthiest cereal, I did the opposite of wht I stated above, making a list of cereals with fiber in ascending order and sugar in descending. This allowed me to see that Golden Crisp is the unhealthiest cereal, as it has no fiber and 15 grams of sugar per serving.
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 LHCold <- cereal[order(cereal$fiber, -cereal$sugars),]
 head(LHCold)
 ```
@@ -188,7 +188,7 @@ head(LHCold)
   
 **4) Do people prefer hot or cold cereal based off of the rating? (Answered by Madalyn Mueller)**
   
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 #All defaults
 cold <- cereal %>%
   filter(type == "C")
@@ -223,7 +223,7 @@ To find this, I made filtered data sets of all 7 of the manufacturers (American 
 
 Nabisco is the manufacturer with the highest average rating. This makes sense, because five out of the 10 highest rated cereals are produced by Nabisco. Their cereals include 100% Bran, Cream of Wheat, Shredded Wheat, and Strawberry Fruit Wheats.
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 #All defaults
 manu_n <- cereal %>%
   filter(mfr == "N")
@@ -265,7 +265,7 @@ Answering this question required me to summarize the mean sugar and fiber conten
 I then filtered the results to show the manufacturers that met the guidelines for a healthy cereal as defined by
 our source from the Cleveland Clinic (sugar < 6g/serving, fiber > 2.5g/serving). The only manufacturer to meet this criteria was Nabisco, but to better visualize how the other manufacturers placed, I made two graphs displaying the distribution of sugar and fiber content between the various manufacturers.
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 cereal1 <- filter(cereal, sugars >=0, fiber >=0)
 mf <- cereal1 %>% group_by(mfr) %>% summarize(SUGAR = mean(sugars), FIBER = mean(fiber))
 hlthymfr <- filter(mf, SUGAR < 6, FIBER >= 2.5)
@@ -280,7 +280,7 @@ Which is the least healthy manufacturer?
 
 This question is just the opposite of my first one. I used the same dataset of summarized sugar and fiber content but instead selected the manufacturers that were opposite to the recommendations from Cleveland Clinic. This yielded 3 results that weren't overwhelmingly obvious which is the worst. Ralston Purina is not that far from being considered healthy and Quaker Oats wasn't far from meeting the sugar requirement. General Mills had much more sugar than the rest and not much different fiber content, so I decided that General Mills was the least healthy of all. 
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 unhlthymfr <- filter(mf, SUGAR > 6, FIBER<2.5)
 ggplot(unhlthymfr, aes(x=Manufacturer,weight=SUGAR, fill=Manufacturer))+ylab('Sugar (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
 ggplot(unhlthymfr, aes(x=Manufacturer,weight=FIBER, fill=Manufacturer))+ylab('Fiber (g)')+geom_bar()+theme(axis.text.x=element_text(angle=90,hjust=1))
@@ -300,14 +300,14 @@ All values of fiber and sodium for all ages were calculated with the use of nutr
 
 Kids 4-8 years of age:
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 kids_healthy <- cereal %>% filter(fiber >= 6, sodium <= 150)
 kids_healthy
 ```
 
 Kids 9-13 years of age:
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 kids_healthy2 <- cereal %>% filter(fiber >= 7, sodium <= 200)
 kids_healthy2
 ```
@@ -328,28 +328,27 @@ All values of fiber and sodium for all ages were calculated with the use of nutr
 
 Males 19-50 years of age:
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 adultm_healthy <- cereal %>% filter(fiber >= 9, sodium <= 200)
 adultm_healthy
 ```
 
 Females 19-50 years of age:
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 adultf_healthy <- cereal %>% filter(fiber >= 6, sodium <= 200)
 adultf_healthy
 ```
 
 Males 70+ years of age:
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 elderm_healthy <- cereal %>% filter(fiber >= 7, sodium <= 150)
 elderm_healthy
 ```
 
 Females 70+ years of age:
-
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 elderf_healthy <- cereal %>% filter(fiber >= 5, sodium <= 150)
 elderf_healthy
 ```
@@ -368,7 +367,7 @@ As a result, all age ranges shown above should purchase 100% Bran and/or All-Bra
   
 Using the same USDA daily intake summary table, I made a ratio of daily calories to meals per day to compute the amount of calories a male and female should consume approximately for breakfast and I concluded that men should have roughly 600 calories and females should have 500. After calculating the two I found the calories per serving in cups for the healthiest cereal, All-Bran with Extra Fiber, and the least healthiest cereal, Gold Crisp, stated earlier by Vismay. With those values I created a simple equation of dividing the male and female calorie intake by the amount of calories per serving and then multiplied that value by the amount of cereal in cups.
 
-```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
 amount_healthy_male <- (600/50)*0.5
 amount_healthy_male
 amount_worst_male <- (600/100)*0.88
@@ -393,12 +392,12 @@ I found that men can have roughly 6 cups of the healthiest cereal and about 5.28
 
   For this question, I made a dplyr fuction that took our cereal dataset, grouped it by the shelf category, summarized the average rating and the count, and then arranged the results from the highest average rating to the least average rating. 
   
-  ```{r}
+```{r, echo= FALSE, message=FALSE,warning=FALSE,results=TRUE}
   avgShelf <- cereal %>%
               group_by(shelf) %>%
               summarise(avgRating = mean(rating), count = n()) %>%
               arrange(desc(avgRating))
-  ```
+```
   
   From the results, we can see that the lowest shelf (shelf = 1) has the highest average rating. However, it is interesting to note that the highest shelf (shelf = 3) is really close and has more cereals in the data set to average. Shelf 2 has a significantly less average rating value. This leads me to conclude that people prefer to buy the cheapest cereal or the most expensive cereals based off of rating. 
 
